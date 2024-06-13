@@ -1,10 +1,13 @@
 import { prompt } from "./helper.js";
 
-// 🦁 Crée une fonction `validateNumber`
-// 🦁 Elle prendra en paramètre `number`
-// 🦁 Si `number` n'est pas un nombre ou est trop grand / trop petit (max: 100000000000000)
-// 🦁 Alors affiche "Error : number is not a number or is too big / too small (max: 100000000000000)" et quitte le programme
-// 💡 function validateNumber(number) {
+function validateNumber(number) {
+  if (Number.isNaN(number) || Math.abs(number) > 100000000000000) {
+    console.log(
+      "Error : number is not a number or is too big / too small (max: 100000000000000)"
+    );
+    process.exit(1);
+  }
+}
 
 console.log("ADDITION-MASTER ™️");
 
@@ -32,26 +35,10 @@ while (operator === 0) {
 }
 
 const firstNumber = Number(prompt("Enter the first number : "));
-
-// 🦁 Déplace la validation du nombre dans la fonction `validateNumber`
-// 🦁 Utilise la fonction `validateNumber` pour valider `firstNumber`
-if (Number.isNaN(firstNumber) || Math.abs(firstNumber) > 100000000000000) {
-  console.log(
-    "Error : firstNumber is not a number or is too big / too small (max: 100000000000000)"
-  );
-  process.exit(1);
-}
+validateNumber(firstNumber);
 
 const secondNumber = Number(prompt("Enter the second number : "));
-
-// 🦁 Déplace la validation du nombre dans la fonction `validateNumber`
-// 🦁 Utilise la fonction `validateNumber` pour valider `secondNumber`
-if (Number.isNaN(secondNumber) || Math.abs(secondNumber) > 100000000000000) {
-  console.log(
-    "Error : secondNumber is not a number or is too big / too small (max: 100000000000000)"
-  );
-  process.exit(1);
-}
+validateNumber(secondNumber);
 
 if (operator === 4 && secondNumber === 0) {
   console.log("Error : division by 0");
